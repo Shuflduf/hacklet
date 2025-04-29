@@ -1,9 +1,9 @@
 javascript: (async function () {
   const inQuestionText = document.querySelector(
-    '[class*="question-title__Title-"]'
+    '[class*="question-title__Title-"]',
   );
   const inPreQuestionText = document.querySelector(
-    '[class*="block-title__Title-"]'
+    '[class*="block-title__Title-"]',
   );
   let text = inQuestionText
     ? inQuestionText.textContent
@@ -12,16 +12,15 @@ javascript: (async function () {
       : null;
 
   let answers = [];
-  document.querySelectorAll(
-    '[data-functional-selector*="question-choice-text-"]',
-  ).forEach((item) => {
-    answers.push(item.children[0].textContent);
-  });
-
+  document
+    .querySelectorAll('[data-functional-selector*="question-choice-text-"]')
+    .forEach((item) => {
+      answers.push(item.children[0].textContent);
+    });
   if (answers.length !== 0) {
     const answer = answers.join("\n");
-    text += "\n"
-    text += "ANSWERS:\n"
+    text += "\n";
+    text += "ANSWERS:\n";
     text += answer;
   }
 
@@ -66,6 +65,7 @@ javascript: (async function () {
       ],
     }),
   });
+
   const result = await geminiRequest;
   const json = await result.json();
   console.log(json);
