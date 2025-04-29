@@ -10,7 +10,11 @@ javascript: (async function () {
     : inPreQuestionText
       ? inPreQuestionText.textContent
       : null;
-  const GEMINI_API_KEY = "AIzaSyBJWgABbHY2--we8Cll6d-xNYjSbuglQrI";
+  const GEMINI_API_KEY = localStorage.getItem("GEMINI_API_KEY");
+  if (!GEMINI_API_KEY) {
+    localStorage.setItem("GEMINI_API_KEY", prompt("Enter your Gemini API key. You can get an API key from https://aistudio.google.com/apikey: "));
+    return;
+  }
   const url =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" +
     GEMINI_API_KEY;
