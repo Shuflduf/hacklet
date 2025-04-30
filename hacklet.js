@@ -1,4 +1,4 @@
-javascript: void (async function () {
+javascript: (async function () {
   const inQuestionText = document.querySelector(
     '[class*="question-title__Title-"]',
   );
